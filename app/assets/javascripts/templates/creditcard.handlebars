@@ -6,7 +6,7 @@
       <div class="control-group">
         <div class="controls">
           <div class="input-append">
-            <label  class="control-label">
+            <label  {{bindAttr for="view.name.elementId"}} class="control-label">
               Name
             </label>
             {{view Payment.CardTextField viewName="name" valueBinding="name" class="span2"}}
@@ -20,7 +20,7 @@
       <div class="control-group">
         <div class="controls">
           <div class="input-append">
-            <label  class="control-label">
+            <label  {{bindAttr for="view.cardnumber.elementId"}} class="control-label">
               Credit card number
             </label>
             {{view Payment.CardTextField viewName="cardnumber" valueBinding="cardnumber" class="input-xlarge"}}
@@ -34,7 +34,7 @@
       <div class="control-group">
         <div class="controls">
           <div class="input-append">
-            <label class="control-label">
+            <label {{bindAttr for="view.csv.elementId"}} class="control-label">
               CSV
             </label>
             {{view Payment.CardTextField viewName="csv" valueBinding="csv" class="input-small"}}
