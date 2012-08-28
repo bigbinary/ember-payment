@@ -9,9 +9,9 @@
             <label  class="control-label">
               Name
             </label>
-            <input type="text" name='name' class='span2'>
+            {{view Payment.CardTextField viewName="name" valueBinding="name" class="span2"}}
             <span>
-                <i class=""></i>
+                <i {{bindAttr class="nameError:icon-remove:icon-ok"}}></i>
             </span>
           </div>
         </div>
@@ -23,9 +23,9 @@
             <label  class="control-label">
               Credit card number
             </label>
-            <input type="text" name='cardnumber' class='input-xlarge'>
+            {{view Payment.CardTextField viewName="cardnumber" valueBinding="cardnumber" class="input-xlarge"}}
             <span>
-                <i class=""></i>
+                <i {{bindAttr class="cardnumberError:icon-remove:icon-ok"}}></i>
             </span>
           </div>
         </div>
@@ -37,9 +37,9 @@
             <label class="control-label">
               CSV
             </label>
-            <input type="text" name='csv' class='input-small'>
+            {{view Payment.CardTextField viewName="csv" valueBinding="csv" class="input-small"}}
             <span>
-                <i class=""></i>
+                <i {{bindAttr class="csvError:icon-remove:icon-ok"}}></i>
             </span>
           </div>
         </div>
