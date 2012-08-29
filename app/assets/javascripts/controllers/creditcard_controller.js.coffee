@@ -11,7 +11,6 @@ Payment.CreditcardController = Ember.ObjectController.extend
     @.set("#{val}Error", error)
     error
 
-
   getValue: (val) ->
     error = false
     unless result = !!@.get(val)
@@ -27,8 +26,8 @@ Payment.CreditcardController = Ember.ObjectController.extend
     @.getValue('name')
 
   validateCardnumber: ->
-    @.getValue('cardnumber') && @.isNumber('cardnumber')
+    @.getValue('cardnumber')  && @.isNumber('cardnumber')
 
   validateCsv: ->
-    @.getValue('csv') && @.isNumber('csv')
+    @.getValue('csv')  && @.isNumber('csv')
 
