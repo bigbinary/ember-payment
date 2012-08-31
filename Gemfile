@@ -41,3 +41,5 @@ gem "twitter-bootstrap-rails", :group => :assets
 
 gem 'ember-rails', '= 0.7.0'
 
+gem 'thin'
+
