@@ -8,3 +8,4 @@
 
 
 Product.create!(name: 't-shirt', price: 20)
+Product.create!(name: 'cap', price: 11)
