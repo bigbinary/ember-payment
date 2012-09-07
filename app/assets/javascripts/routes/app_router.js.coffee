@@ -19,9 +19,10 @@ Payment.Router = Ember.Router.extend
         router.get('applicationController').connectOutlet('about', a)
 
     showuser: Ember.Route.extend
-      route: "/:name"
+      #route: "/:name"
+      route: "/name"
       deserialize: (router, params) ->
-        Payment.User.create({ "name": params.name, "githubid": "neerajdotname" } )
+        Payment.User.create({ "name": "Neeraj", "githubid": "neerajdotname" } )
       connectOutlets: (router, user) ->
         router.get('applicationController').connectOutlet('user', user)
 
