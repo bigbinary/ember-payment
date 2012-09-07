@@ -1,0 +1,8 @@
+<h1>This is about section</h1>
+
+<h2>Team members</h2>
+
+{{#each user in content}}
+  <a {{action showUser user href="true"}}>{{user.name}}</a>
+{{/each}}
+
