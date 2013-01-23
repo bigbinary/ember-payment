@@ -1,5 +1,5 @@
 Payment.Store = DS.Store.extend({
-  revision: 4,
+  revision: 11,
   adapter: DS.RESTAdapter.create()
 });
 

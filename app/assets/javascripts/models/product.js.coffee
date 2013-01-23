@@ -1,3 +1,3 @@
 Payment.Product = DS.Model.extend
-  name: DS.attr('string')
+  name: DS.attr('string', defaultValue: 'Hai')
   price: DS.attr('number')

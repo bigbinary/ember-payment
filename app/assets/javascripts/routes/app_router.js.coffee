@@ -1,60 +1,36 @@
-Payment.Router = Ember.Router.extend
 
-  location: "hash"
+Payment.Router.map ->
+  @resource 'products', ->
+    @route('new')
+    return
 
-  enableLogging: true
+  @resource 'product', { path: '/product/:product_id' }, ->
+    @route('edit')
+    return
+  return
 
-  root: Ember.Route.extend
+Payment.IndexRoute = Ember.Route.extend
+  redirect: ->
+    @transitionTo('products.index')
 
-    index: Ember.Route.extend
-      route: "/"
-      redirectsTo: 'products.index'
+Payment.ProductsIndexRoute = Ember.Route.extend
+  model: -> Payment.Product.find()
 
-    products: Ember.Route.extend
-      route: '/products'
+Payment.ProductEditRoute = Ember.Route.extend
+  events:
+    save: (context) ->
+      @controllerFor('product').get('content.transaction').commit()
+      @transitionTo('products.index')
+    cancel: (context) ->
+      @transitionTo('products.index')
 
-      index: Ember.Route.extend
-        route: '/'
-        editProduct: Ember.Route.transitionTo('edit')
-        newProduct: Ember.Route.transitionTo('new')
-        connectOutlets: (router) ->
-          router.get('applicationController').connectOutlet('products', Payment.Product.find())
+Payment.ProductsNewRoute = Ember.Route.extend
+  model: -> Payment.Product.createRecord()
 
-      edit: Ember.Route.extend
-        route: '/:product_id/edit'
-
-        save: (router, product) ->
-          transaction = router.get('productController').get('transaction')
-          transaction.commit()
-          router.transitionTo('index')
-
-        cancel: (router, product) ->
-          transaction = router.get('productController').get('transaction')
-          transaction.rollback()
-          router.transitionTo('index')
-
-        connectOutlets: (router, product) ->
-          transaction = router.get('store').transaction()
-          transaction.add(product)
-          router.get('applicationController').connectOutlet('product', product)
-          router.get('productController').set('transaction', transaction)
-
-      new: Ember.Route.extend
-        route: '/new'
-
-        save: (router, product) ->
-          transaction = router.get('productController').get('transaction')
-          transaction.commit()
-          router.transitionTo('index')
-
-        cancel: (router, product) ->
-          transaction = router.get('productController').get('transaction')
-          transaction.rollback()
-          router.transitionTo('index')
-
-        connectOutlets: (router) ->
-          transaction = router.get('store').transaction()
-          product = transaction.createRecord(Payment.Product)
-          router.get('applicationController').connectOutlet('product', product)
-          router.get('productController').set('transaction', transaction)
+  events:
+    save: (context) ->
+      @currentModel.get('transaction').commit()
+      @transitionTo('products.index')
+    cancel: (context) ->
+      @transitionTo('products.index')
 

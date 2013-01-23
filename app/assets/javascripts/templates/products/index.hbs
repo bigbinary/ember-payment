@@ -1,0 +1,11 @@
+<table class='table table-bordered'>
+  {{#each content}}
+    <tr>
+      <td>{{name}}</td>
+      <td> $ {{price}}.00 USD</td>
+      <td> {{#linkTo "product.edit" this}}edit{{/linkTo}}</td>
+    </tr>
+  {{/each}}
+</table>
+
+{{#linkTo "products.new"}} Add new product {{/linkTo}}

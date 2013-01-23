@@ -39,7 +39,7 @@ gem 'jquery-rails'
 
 gem "twitter-bootstrap-rails", :group => :assets
 
-gem 'ember-rails', '= 0.7.0'
+gem 'ember-rails', github: 'emberjs/ember-rails'
 
 gem 'thin'
 
